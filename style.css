@@ -33,9 +33,11 @@ nav a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  justify-items: center;
   background: #fffaf3;
   padding: 60px 8%;
   position: relative;
+  gap: 40px;
 }
 
 .hero-text {
