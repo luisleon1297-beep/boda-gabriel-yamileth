@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLctZ-7hPLLJ7nMqp5U4FMDbvAPRxu1_w",
@@ -67,8 +67,95 @@ form.addEventListener("submit", async (e) => {
     await addDoc(collection(db, "confirmaciones_boda"), datos);
     respuesta.textContent = "Confirmación enviada correctamente ♡";
     form.reset();
+    cargarMensajesNovios();
   } catch (error) {
     console.error(error);
     respuesta.textContent = "Error al enviar la confirmación.";
   }
 });
+
+
+let mensajesNovios = [];
+let indiceMensaje = 0;
+let intervaloMensajes = null;
+
+function limpiarTexto(texto) {
+  return String(texto || "").replace(/[&<>'"]/g, (caracter) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "'": "&#39;",
+    "\"": "&quot;"
+  }[caracter]));
+}
+
+function mostrarMensajeActual() {
+  const contenedor = document.getElementById("mensajeActual");
+
+  if (!contenedor) return;
+
+  if (!mensajesNovios.length) {
+    contenedor.innerHTML = "Aún no hay mensajes para mostrar.";
+    return;
+  }
+
+  const item = mensajesNovios[indiceMensaje];
+
+  contenedor.style.opacity = 0;
+
+  setTimeout(() => {
+    contenedor.innerHTML = `
+      “${limpiarTexto(item.mensaje)}”
+      <strong>— ${limpiarTexto(item.nombre)}</strong>
+    `;
+
+    contenedor.style.opacity = 1;
+    indiceMensaje = (indiceMensaje + 1) % mensajesNovios.length;
+  }, 400);
+}
+
+async function cargarMensajesNovios() {
+  const contenedor = document.getElementById("mensajeActual");
+  if (!contenedor) return;
+
+  try {
+    const q = query(
+      collection(db, "confirmaciones_boda"),
+      orderBy("fechaRegistro", "desc")
+    );
+
+    const consulta = await getDocs(q);
+
+    mensajesNovios = [];
+
+    consulta.forEach((documento) => {
+      const data = documento.data();
+
+      if (
+        data.asiste &&
+        data.asiste.includes("Sí") &&
+        data.mensaje &&
+        data.mensaje.trim() !== ""
+      ) {
+        mensajesNovios.push({
+          nombre: data.nombre || "Invitado",
+          mensaje: data.mensaje
+        });
+      }
+    });
+
+    indiceMensaje = 0;
+    mostrarMensajeActual();
+
+    if (intervaloMensajes) {
+      clearInterval(intervaloMensajes);
+    }
+
+    intervaloMensajes = setInterval(mostrarMensajeActual, 15000);
+  } catch (error) {
+    console.error(error);
+    contenedor.innerHTML = "No se pudieron cargar los mensajes.";
+  }
+}
+
+cargarMensajesNovios();
