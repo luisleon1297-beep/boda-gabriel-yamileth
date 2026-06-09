@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel & Yamileth | Boda</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#historia">Nuestra historia</a>
+    <a href="#detalles">Detalles</a>
+    <a href="#vestimenta">Vestimenta</a>
+    <a href="#galeria">Galería</a>
+    <a href="#regalos">Regalos</a>
+    <a href="#asistencia">Confirmar</a>
+  </nav>
+</header>
+
+<section id="inicio" class="hero">
+  <div class="flores flores-top"></div>
+
+  <div class="hero-text">
+    <p class="small">NUESTRA UNIÓN</p>
+    <h1>GABRIEL<br><span>&</span><br>YAMILETH</h1>
+    <p>Queremos compartir contigo<br>la felicidad de este momento</p>
+
+    <div class="fecha">
+      <span>JULIO</span>
+      <strong>17</strong>
+      <span>2026</span>
+    </div>
+
+    <p class="civil">CIVIL + ALMUERZO</p>
+  </div>
+
+  <div class="hero-img">
+    <img src="img/foto1.jpg" alt="Gabriel y Yamileth">
+  </div>
+</section>
+
+<section class="contador">
+  <h2>Faltan para el gran día</h2>
+  <div class="countdown">
+    <div><span id="dias">0</span><p>Días</p></div>
+    <div><span id="horas">0</span><p>Horas</p></div>
+    <div><span id="minutos">0</span><p>Minutos</p></div>
+    <div><span id="segundos">0</span><p>Segundos</p></div>
+  </div>
+</section>
+
+<section id="historia" class="historia">
+  <div class="texto">
+    <h2>Nuestra Historia ♡</h2>
+    <p>
+      Dos caminos se encontraron sin buscarse, pero el destino tenía un plan perfecto para nosotros.
+      Hoy, después de tantas historias, risas y aprendizajes, hemos decidido escribir juntos
+      el capítulo más importante de nuestras vidas.
+    </p>
+  </div>
+
+  <div class="collage">
+    <img src="img/foto2.jpg">
+    <img src="img/foto3.jpg">
+    <img src="img/foto5.jpg">
+    <img src="img/foto4.jpg">
+  </div>
+</section>
+
+<section id="detalles" class="detalles">
+  <h2>Detalles del evento</h2>
+
+  <div class="cards">
+    <div>
+      <h3>Fecha</h3>
+      <p>17 de julio de 2026</p>
+    </div>
+    <div>
+      <h3>Hora</h3>
+      <p>A confirmar</p>
+    </div>
+    <div>
+      <h3>Lugar</h3>
+      <p>A confirmar</p>
+    </div>
+  </div>
+
+  <a class="btn" href="#" target="_blank">Ver ubicación en el mapa</a>
+</section>
+
+<section id="vestimenta" class="vestimenta">
+  <h2>Código de vestimenta</h2>
+
+  <div class="dress-grid">
+    <div>
+      <h3>Hombres</h3>
+      <p>Formal<br>Traje oscuro</p>
+    </div>
+
+    <div>
+      <h3>Mujeres</h3>
+      <p>Formal elegante</p>
+    </div>
+
+    <div>
+      <h3>Colores sugeridos</h3>
+      <div class="colores">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <p>Evitar blanco, reservado para la novia.</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="galeria">
+  <h2>Galería de fotos ♡</h2>
+
+  <div class="grid-galeria">
+    <img src="img/foto1.jpg">
+    <img src="img/foto2.jpg">
+    <img src="img/foto3.jpg">
+    <img src="img/foto4.jpg">
+    <img src="img/foto5.jpg">
+    <img src="img/foto8.jpg">
+  </div>
+</section>
+
+<section id="regalos" class="regalos">
+  <h2>Regalos ♡</h2>
+
+  <div class="regalos-box">
+    <p>
+      Tu presencia es nuestro mejor regalo. Aún así, estamos agradecidos de que puedas
+      ayudarnos con tu granito de arena en esta nueva etapa que comenzaremos juntos.
+    </p>
+
+    <div>
+      <strong>YAMILETH ROMERO MORALES</strong>
+      <p>19.954.099-8</p>
+      <p>BANCO DE CHILE</p>
+      <p>CUENTA VISTA</p>
+      <p id="datosCuenta">00-012-56251-50</p>
+      <button onclick="copiarDatos()">Copiar datos</button>
+    </div>
+  </div>
+</section>
+
+<section id="asistencia" class="asistencia">
+  <h2>Confirmar asistencia ♡</h2>
+
+  <form id="formAsistencia">
+    <input type="text" id="nombre" placeholder="Nombre completo" required>
+
+    <select id="acompanantes">
+      <option value="0">Sin acompañantes</option>
+      <option value="1">1 acompañante</option>
+      <option value="2">2 acompañantes</option>
+      <option value="3">3 acompañantes</option>
+      <option value="4">4 acompañantes</option>
+    </select>
+
+    <select id="asiste" required>
+      <option value="Sí, asistiré">Sí, asistiré</option>
+      <option value="No podré asistir">No podré asistir</option>
+    </select>
+
+    <textarea id="mensaje" placeholder="Mensaje para los novios"></textarea>
+
+    <button type="submit">Enviar confirmación ♡</button>
+  </form>
+
+  <p id="respuesta"></p>
+</section>
+
+<footer>
+  <p>Con amor</p>
+  <h3>Gabriel & Yamileth</h3>
+  <p>17 Julio 2026</p>
+</footer>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
