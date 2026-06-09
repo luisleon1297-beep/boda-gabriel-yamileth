@@ -154,6 +154,7 @@ section h2 {
 .detalles,
 .vestimenta,
 .galeria,
+.mensajes-novios,
 .regalos,
 .asistencia {
   padding: 65px 8%;
@@ -218,6 +219,46 @@ button {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 6px;
+}
+
+
+.mensajes-novios {
+  background: #fffaf3;
+}
+
+.mensajes-intro {
+  max-width: 700px;
+  margin: -10px auto 30px;
+  line-height: 1.6;
+}
+
+.mensaje-slider {
+  max-width: 850px;
+  min-height: 180px;
+  margin: 0 auto;
+  background: #f8f5ef;
+  border: 1px solid #d6cbbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+}
+
+.mensaje-card {
+  font-size: 22px;
+  line-height: 1.7;
+  font-style: italic;
+  color: #51473d;
+  transition: opacity .5s ease;
+}
+
+.mensaje-card strong {
+  display: block;
+  margin-top: 18px;
+  font-size: 16px;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .regalos-box {
