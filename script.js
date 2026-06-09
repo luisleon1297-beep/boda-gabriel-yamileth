@@ -2,12 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_PROYECTO.firebaseapp.com",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_PROYECTO.appspot.com",
-  messagingSenderId: "TU_MESSAGING_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyDLctZ-7hPLLJ7nMqp5U4FMDbvAPRxu1_w",
+  authDomain: "datos-boda-ce3d2.firebaseapp.com",
+  projectId: "datos-boda-ce3d2",
+  storageBucket: "datos-boda-ce3d2.firebasestorage.app",
+  messagingSenderId: "802804747058",
+  appId: "1:802804747058:web:434fad98815db6513ce52b"
 };
 
 const app = initializeApp(firebaseConfig);
